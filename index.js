@@ -19,7 +19,7 @@ prompts([
     name: "bundleName",
     message: "What will be your bundle identifire?",
     validate: function validate(bundleName) {
-      var regex = new RegExp("^[a-z-]+$");
+      var regex = new RegExp(/com\.[a-z]/);
       return regex.test(bundleName) ? true : false;
     }
   },
@@ -46,7 +46,8 @@ prompts([
     var currentPath = shell.pwd();
     var projectPath = shell.pwd();
     var projectURL = "";
-
+    var projectFolderArray=[];
+    var projectFolder="";
     // Check type of project
     if (response.projectPath == "create") {
       shell.mkdir(response.projectName);
@@ -57,20 +58,47 @@ prompts([
     shell.cd(projectPath);
 
     // Pull and Process the project
+     projectFolderArray = response.projectName.split(".");
+     projectFolder = projectFolderArray[projectFolderArray.length - 1];
     projectURL =
       "git clone https://github.com/Sonu654/react-native-navigation-v2-starter.git .";
     shell.exec(projectURL, { silent: true });
-    shell.rm('-rf', '.git');
+    shell.rm("-rf", ".git");
+    shell.rm("-rf", "package-lock.json");
     shell.sed("-i", "reactNativeStarterV2", response.projectName, [
       "package.json",
-      "package-lock.json",
-      "bin/www"
+      "app.js"
     ]);
-    shell.sed("-i","com.starter",response.bundleName,[
-        "/android/app/src/starter/MainActivity.java",
-        "/android/app/src/starter/MainApplication.java",
-        "/android/app/src/manifest.xml",
-    ])
+    shell.sed("-i", "com.starter", response.bundleName, [
+      "android/app/build.gradle",
+      "android/app/src/com/starter/MainActivity.java",
+      "android/app/src/com/starter/MainApplication.java",
+      "android/app/src/manifest.xml",
+      "ios/RNFramework/info.plist",
+      "ios/RNFramework-tvOS/info.plist",
+      "ios/RNFramework-tvOSTests/info.plist",
+      "ios/RNFrameworkTests/info.plist"
+    ]);
+    shell.mv(
+      "-f",
+      "android/app/src/com/starter",
+      `android/app/src/com/${projectFolder}`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFramework.xcodeproj",
+      `ios/${projectFolder}.xcodeproj`
+    );
+
+    shell.mv("-f", "ios/RNFramework", `ios/${projectFolder}`);
+    shell.mv("-f", "ios/RNFramework-tvOS", `ios/${projectFolder}-tvOS`);
+    shell.mv(
+      "-f",
+      "ios/RNFramework-tvOSTests",
+      `ios/${projectFolder}-tvOSTests`
+    );
+    shell.mv("-f", "ios/RNFrameworkTests", `ios/${projectFolder}Tests`);
+
     // Move back to the path where the input was made
     shell.cd(currentPath);
 
