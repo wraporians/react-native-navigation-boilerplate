@@ -46,8 +46,8 @@ prompts([
     var currentPath = shell.pwd();
     var projectPath = shell.pwd();
     var projectURL = "";
-    var projectFolderArray=[];
-    var projectFolder="";
+    var projectFolderArray = [];
+    var projectFolder = "";
     // Check type of project
     if (response.projectPath == "create") {
       shell.mkdir(response.projectName);
@@ -58,8 +58,8 @@ prompts([
     shell.cd(projectPath);
 
     // Pull and Process the project
-     projectFolderArray = response.projectName.split(".");
-     projectFolder = projectFolderArray[projectFolderArray.length - 1];
+    projectFolderArray = response.projectName.split(".");
+    projectFolder = projectFolderArray[projectFolderArray.length - 1];
     projectURL =
       "git clone https://github.com/Sonu654/react-native-navigation-v2-starter.git .";
     shell.exec(projectURL, { silent: true });
@@ -103,9 +103,18 @@ prompts([
     shell.cd(currentPath);
 
     // Show Greetings
-    console.log("\nBoilerplate Generated.");
-    console.log("\nThank you for trying Lean Boilerplate.");
+    console.log(
+      "\nProject is generated successfully.\nFollow following steps to start working...."
+    );
+    console.log(
+      "\n   cd ",
+      response.projectName,
+      "\n   yarn && react-native run-ios or react-native run-ios"
+    );
+    console.log(
+      "\nThank you for react-native-navigation-boilerplate.\n ***********  Happy Codeing  ************ "
+    );
   } else {
-    console.log("\nBoilerplate Generation Cancelled.");
+    console.log("\nProject generation cancelled. try again");
   }
 });
