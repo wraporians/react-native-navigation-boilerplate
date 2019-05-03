@@ -13,7 +13,7 @@ npm install -g react-native-navigation-boilerplate
 After installing the package as a global executable. You will be able to use **"React-Native-Navigation init"** command to generate new React Native Navigation boilerplate.
 
 ```bash
-$~ React-Native-Navigation init
+$~ react-native-boilerplate
 ```
 
 ## Boilerplate Structure
