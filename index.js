@@ -3,6 +3,7 @@
 
 var prompts = require("prompts");
 var shell = require("shelljs");
+var fs = require("fs");
 
 prompts([
   {
@@ -17,7 +18,7 @@ prompts([
   {
     type: "text",
     name: "bundleName",
-    message: "What will be your bundle identifire?",
+    message: "What will be your bundle identifier?",
     validate: function validate(bundleName) {
       var regex = new RegExp(/com\.[a-z]/);
       return regex.test(bundleName) ? true : false;
@@ -65,6 +66,7 @@ prompts([
     shell.exec(projectURL, { silent: true });
     shell.rm("-rf", ".git");
     shell.rm("-rf", "package-lock.json");
+    shell.rm("-rf", "yarn.lock");
     shell.sed("-i", "reactNativeStarterV2", response.projectName, [
       "package.json",
       "app.json"
@@ -72,39 +74,107 @@ prompts([
     shell.mv(
       "-f",
       "android/app/src/main/java/com/starter",
-      `android/app/src/main/java/com/${projectFolder}`
+      `android/app/src/main/java/com/${response.projectName}`
     );
     shell.mv(
       "-f",
       "ios/RNFramework.xcodeproj",
-      `ios/${projectFolder}.xcodeproj`
+      `ios/${response.projectName}.xcodeproj`
     );
 
-    shell.mv("-f", "ios/RNFramework", `ios/${projectFolder}`);
-    shell.mv("-f", "ios/RNFramework-tvOS", `ios/${projectFolder}-tvOS`);
+    shell.mv("-f", "ios/RNFramework", `ios/${response.projectName}`);
+    shell.mv("-f", "ios/RNFramework-tvOS", `ios/${response.projectName}-tvOS`);
     shell.mv(
       "-f",
       "ios/RNFramework-tvOSTests",
-      `ios/${projectFolder}-tvOSTests`
+      `ios/${response.projectName}-tvOSTests`
     );
-    shell.mv("-f", "ios/RNFrameworkTests", `ios/${projectFolder}Tests`);
-
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests/RNFrameworkTests.m",
+      `ios/${response.projectName}Tests/${response.projectName}Tests.m`
+    );
+    shell.mv("-f", "ios/RNFrameworkTests", `ios/${response.projectName}Tests`);
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcodeproj/project.pbxproj",
+      `ios/${response.projectName}Tests.xcodeproj/project.pbxproj`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcworkspace/contents.xcworkspacedata",
+      `ios/${response.projectName}.xcworkspace/contents.xcworkspacedata`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFrameworkTests-tvOS.xcscheme",
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }-tvOS.xcscheme`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFrameworkTests.xcscheme",
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }.xcscheme`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFramework-tvOS.xcscheme",
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }-tvOS.xcscheme`
+    );
+    shell.mv(
+      "-f",
+      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFramework.xcscheme",
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }.xcscheme`
+    );
     shell.sed("-i", "com.starter", response.bundleName, [
       "android/app/build.gradle",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
       `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
       "android/app/src/main/java/manifest.xml",
-      "ios/RNFramework/info.plist",
-      "ios/RNFramework-tvOS/info.plist",
-      "ios/RNFramework-tvOSTests/info.plist",
-      "ios/RNFrameworkTests/info.plist",
-      `ios/${projectFolder}.xcodeproj/project.pbxproj`,
-      `ios/${projectFolder}.xcworkspace/contents.xcworkspacedata`,
-      `ios/${projectFolder}.xcodeproj/xcshareddata/xcschemes/${projectFolder}-tvOS.xcscheme`,
-      `ios/${projectFolder}.xcodeproj/xcshareddata/xcschemes/${projectFolder}.xcscheme`,
-      `ios/${projectFolder}/AppDelegate.m`,
+      `ios/${response.projectName}/info.plist`,
+      `ios/${response.projectName}-tvOS/info.plist`,
+      `ios/${response.projectName}-tvOSTests/info.plist`,
+      `ios/${response.projectName}/info.plist`,
+      `ios/${response.projectName}.xcodeproj/project.pbxproj`,
+      `ios/${response.projectName}.xcworkspace/contents.xcworkspacedata`,
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }-tvOS.xcscheme`,
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }.xcscheme`,
+      `ios/${response.projectName}/AppDelegate.m`,
       "android/settings.gradle",
-      `ios/${projectFolder}Tests/${projectFolder}Tests.m`
+      `ios/${response.projectName}Tests/${response.projectName}Tests.m`,
+      `ios/${response.projectName}Tests.xcodeproj/project.pbxproj`
+    ]);
+    shell.sed("-i", "RNFramework", response.projectName, [
+      "android/app/build.gradle",
+      `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
+      `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
+      "android/app/src/main/java/manifest.xml",
+      `ios/${response.projectName}/info.plist`,
+      `ios/${response.projectName}-tvOS/info.plist`,
+      `ios/${response.projectName}-tvOSTests/info.plist`,
+      `ios/${response.projectName}.xcodeproj/project.pbxproj`,
+      `ios/${response.projectName}.xcworkspace/contents.xcworkspacedata`,
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }-tvOS.xcscheme`,
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }.xcscheme`,
+      `ios/${response.projectName}/AppDelegate.m`,
+      "android/settings.gradle",
+      `ios/${response.projectName}Tests/${response.projectName}Tests.m`,
+      `ios/${response.projectName}Tests.xcodeproj/project.pbxproj`
     ]);
     // Move back to the path where the input was made
     shell.cd(currentPath);

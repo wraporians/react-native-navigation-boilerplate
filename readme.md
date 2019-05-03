@@ -2,7 +2,7 @@
 
 A simple cli to scaffold your React Native Navigation V2 app fast and hybrid mobile app development. 
 
-## Installation 
+## Installation
 
 ```bash
 npm install -g react-native-navigation-boilerplate
@@ -13,8 +13,40 @@ npm install -g react-native-navigation-boilerplate
 After installing the package as a global executable. You will be able to use **"React-Native-Navigation init"** command to generate new React Native Navigation boilerplate.
 
 ```bash
-$~ react-native-boilerplate
+$ react-native-boilerplate
 ```
+this will ask you project name, bundle identifier and path for project and generate a fresh project. 
+
+## Configuration
+
+Follow following steps to run project:-
+
+1) After generating project move to projectDirectory using
+    
+    ```bash
+    $ cd ProjectName
+    $ yarn 
+    ```
+
+2) For Android 
+   Run Project using
+    ```bash
+    $ react-native run-android
+    ```
+
+3) For iOS 
+   open xcodeproject and in menu click on product select Scheme ==>  Edit Scheme ==> Build 
+   a) in build option un-check Parallelize Build 
+   b) now click on + icon at left bottom corner and react as target
+   c) install third party library using 
+        
+        ```bash
+        $ ./node_modules/react-native/scripts/ios-configure-glog.sh
+   d) Run the project     ```
+   
+    ```bash
+    $ react-native run-ios
+    ```
 
 ## Boilerplate Structure
 
@@ -62,12 +94,9 @@ $~ react-native-boilerplate
 - lodash
 - react
 - react-native
-- react-native-firebase
 - react-native-keyboard-aware-scroll-view
 - react-native-linear-gradient
 - react-native-navigation
-- react-native-responsive-fontsize
-- react-native-ui-lib
 - react-native-vector-icons
 - react-redux
 - redux
@@ -76,11 +105,8 @@ $~ react-native-boilerplate
 - redux-persist
 - redux-thunk
 - seamless-immutable
-- babel-jest (dev)
-- babel-plugin-module-resolver (dev)
 - babel-preset-react-native (dev)
 - jest (dev)
-- react-test-renderer (dev)
 
 (dev) Indicates its a Developer Dependency
 
