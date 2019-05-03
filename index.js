@@ -67,13 +67,13 @@ prompts([
     shell.rm("-rf", "package-lock.json");
     shell.sed("-i", "reactNativeStarterV2", response.projectName, [
       "package.json",
-      "app.js"
+      "app.json"
     ]);
     shell.sed("-i", "com.starter", response.bundleName, [
       "android/app/build.gradle",
-      "android/app/src/com/starter/MainActivity.java",
-      "android/app/src/com/starter/MainApplication.java",
-      "android/app/src/manifest.xml",
+      "android/app/src/main/java/com/starter/MainActivity.java",
+      "android/app/src/main/java/com/starter/MainApplication.java",
+      "android/app/src/main/java/manifest.xml",
       "ios/RNFramework/info.plist",
       "ios/RNFramework-tvOS/info.plist",
       "ios/RNFramework-tvOSTests/info.plist",
@@ -81,8 +81,8 @@ prompts([
     ]);
     shell.mv(
       "-f",
-      "android/app/src/com/starter",
-      `android/app/src/com/${projectFolder}`
+      "android/app/src/main/java/com/starter",
+      `android/app/src/main/java/com/${projectFolder}`
     );
     shell.mv(
       "-f",
