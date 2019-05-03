@@ -69,16 +69,6 @@ prompts([
       "package.json",
       "app.json"
     ]);
-    shell.sed("-i", "com.starter", response.bundleName, [
-      "android/app/build.gradle",
-      "android/app/src/main/java/com/starter/MainActivity.java",
-      "android/app/src/main/java/com/starter/MainApplication.java",
-      "android/app/src/main/java/manifest.xml",
-      "ios/RNFramework/info.plist",
-      "ios/RNFramework-tvOS/info.plist",
-      "ios/RNFramework-tvOSTests/info.plist",
-      "ios/RNFrameworkTests/info.plist"
-    ]);
     shell.mv(
       "-f",
       "android/app/src/main/java/com/starter",
@@ -99,6 +89,23 @@ prompts([
     );
     shell.mv("-f", "ios/RNFrameworkTests", `ios/${projectFolder}Tests`);
 
+    shell.sed("-i", "com.starter", response.bundleName, [
+      "android/app/build.gradle",
+      `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
+      `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
+      "android/app/src/main/java/manifest.xml",
+      "ios/RNFramework/info.plist",
+      "ios/RNFramework-tvOS/info.plist",
+      "ios/RNFramework-tvOSTests/info.plist",
+      "ios/RNFrameworkTests/info.plist",
+      `ios/${projectFolder}.xcodeproj/project.pbxproj`,
+      `ios/${projectFolder}.xcworkspace/contents.xcworkspacedata`,
+      `ios/${projectFolder}.xcodeproj/xcshareddata/xcschemes/${projectFolder}-tvOS.xcscheme`,
+      `ios/${projectFolder}.xcodeproj/xcshareddata/xcschemes/${projectFolder}.xcscheme`,
+      `ios/${projectFolder}/AppDelegate.m`,
+      "android/settings.gradle",
+      `ios/${projectFolder}Tests/${projectFolder}Tests.m`
+    ]);
     // Move back to the path where the input was made
     shell.cd(currentPath);
 
@@ -112,7 +119,7 @@ prompts([
       "\n\n\n               yarn && react-native run-ios or react-native run-ios"
     );
     console.log(
-      "\n\n\nThank you for installing react-native-navigation-boilerplate.\n\n\n\n\n ***********  Happy Coding  ************ \n\n\n\n"
+      "\nThank you for installing react-native-navigation-boilerplate.\n\n\n\n\n ***********  Happy Coding  ************ \n\n\n\n"
     );
   } else {
     console.log("\nProject generation cancelled. try again");
