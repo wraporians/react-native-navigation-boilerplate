@@ -1,6 +1,6 @@
 # React Native Navigation V2 Boilerplate
 
-A simple cli to scaffold your React Native Navigation V2 app fast for hybrid mobile app development. 
+A simple cli to scaffold your React Native Navigation V2 app fast and hybrid mobile app development. 
 
 ## Installation 
 

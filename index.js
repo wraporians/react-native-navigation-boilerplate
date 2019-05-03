@@ -104,15 +104,15 @@ prompts([
 
     // Show Greetings
     console.log(
-      "\nProject is generated successfully.\nFollow following steps to start working...."
+      "\nProject is generated successfully.\n\n\nFollow following steps for start working...."
     );
     console.log(
-      "\n   cd ",
+      "\n\n\n               cd ",
       response.projectName,
-      "\n   yarn && react-native run-ios or react-native run-ios"
+      "\n\n\n               yarn && react-native run-ios or react-native run-ios"
     );
     console.log(
-      "\nThank you for react-native-navigation-boilerplate.\n ***********  Happy Codeing  ************ "
+      "\n\n\nThank you for installing react-native-navigation-boilerplate.\n\n\n\n\n ***********  Happy Coding  ************ \n\n\n\n"
     );
   } else {
     console.log("\nProject generation cancelled. try again");
