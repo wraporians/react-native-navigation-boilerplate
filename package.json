@@ -4,7 +4,7 @@
   "description": "A simple cli to scaffold your react-native-navigation-v2 with redux",
   "main": "index.js",
   "bin": {
-    "React-Native-Navigation init": "./index.js"
+    "react-native-boilerplate": "./index.js"
   },
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1"

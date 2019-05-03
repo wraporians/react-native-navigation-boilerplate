@@ -18,12 +18,6 @@ $~ React-Native-Navigation init
 
 ## Boilerplate Structure
 
-A basic User Controller and Model has already been made with it collection schema for mongodb with some examples of the validations.
-
-The boilerplate uses lang files for the storage of static data and mail structures to be used in the API.
-
-JsonWebToken and Nodemailer integration has also been made using the helpers file integration.
-
 ```bash
 ├── ios
 ├── android
