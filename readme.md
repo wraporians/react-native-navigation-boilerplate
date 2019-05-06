@@ -39,10 +39,10 @@ Follow following steps to run project:-
    a) in build option un-check Parallelize Build 
    b) now click on + icon at left bottom corner and react as target
    c) install third party library using 
-        
-        ```bash
+       
+      
         $ ./node_modules/react-native/scripts/ios-configure-glog.sh
-        ```
+      
    d) Run the project     
    
     ```bash
