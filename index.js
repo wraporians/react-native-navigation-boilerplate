@@ -3,7 +3,7 @@
 
 var prompts = require("prompts");
 var shell = require("shelljs");
-var fs = require("fs");
+// var fs = require("fs");
 
 prompts([
   {
@@ -97,42 +97,28 @@ prompts([
     shell.mv("-f", "ios/RNFrameworkTests", `ios/${response.projectName}Tests`);
     shell.mv(
       "-f",
-      "ios/RNFrameworkTests.xcodeproj/project.pbxproj",
-      `ios/${response.projectName}Tests.xcodeproj/project.pbxproj`
-    );
-    shell.mv(
-      "-f",
-      "ios/RNFrameworkTests.xcworkspace/contents.xcworkspacedata",
-      `ios/${response.projectName}.xcworkspace/contents.xcworkspacedata`
-    );
-    shell.mv(
-      "-f",
-      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFrameworkTests-tvOS.xcscheme",
+      `ios/${
+        response.projectName
+      }.xcodeproj/xcshareddata/xcschemes/RNFramework-tvOS.xcscheme`,
       `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
         response.projectName
       }-tvOS.xcscheme`
     );
     shell.mv(
       "-f",
-      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFrameworkTests.xcscheme",
+      `ios/${response.projectName}Tests/RNFrameworkTests.m`,
+      `ios/${response.projectName}Tests/${response.projectName}Tests.m`
+    );
+    shell.mv(
+      "-f",
+      `ios/${
+        response.projectName
+      }.xcodeproj/xcshareddata/xcschemes/RNFramework.xcscheme`,
       `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
         response.projectName
       }.xcscheme`
     );
-    shell.mv(
-      "-f",
-      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFramework-tvOS.xcscheme",
-      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
-        response.projectName
-      }-tvOS.xcscheme`
-    );
-    shell.mv(
-      "-f",
-      "ios/RNFrameworkTests.xcodeproj/xcshareddata/xcschemes/RNFramework.xcscheme",
-      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
-        response.projectName
-      }.xcscheme`
-    );
+    shell.rm("-rf", `ios/${response.projectName}.xcodeproj/xcuserdata/`);
     shell.sed("-i", "com.starter", response.bundleName, [
       "android/app/build.gradle",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
@@ -150,6 +136,8 @@ prompts([
       `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
         response.projectName
       }.xcscheme`,
+      `ios/${response.projectName}.xcodeproj/project.pbxproj`,
+      `ios/${response.projectName}.xcodeproj/project.xcworkspace`,
       `ios/${response.projectName}/AppDelegate.m`,
       "android/settings.gradle",
       `ios/${response.projectName}Tests/${response.projectName}Tests.m`,
@@ -171,11 +159,18 @@ prompts([
       `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
         response.projectName
       }.xcscheme`,
+      `ios/${response.projectName}.xcodeproj/xcshareddata/xcschemes/${
+        response.projectName
+      }-tvOS.xcscheme`,
       `ios/${response.projectName}/AppDelegate.m`,
       "android/settings.gradle",
       `ios/${response.projectName}Tests/${response.projectName}Tests.m`,
-      `ios/${response.projectName}Tests.xcodeproj/project.pbxproj`
+      `ios/${response.projectName}.xcodeproj/project.pbxproj`,
+      `ios/${response.projectName}.xcodeproj/project.xcworkspace`
     ]);
+    // shell.exec(
+    //   "yarn && ./node_modules/react-native/scripts/ios-install-third-party.sh && ./node_modules/react-native/third-party/glog-0.3.5/configure "
+    // );
     // Move back to the path where the input was made
     shell.cd(currentPath);
 
@@ -186,7 +181,7 @@ prompts([
     console.log(
       "\n\n\n               cd ",
       response.projectName,
-      "\n\n\n               yarn && react-native run-ios or react-native run-ios"
+      "\n\n\n            react-native run-ios or react-native run-ios"
     );
     console.log(
       "\nThank you for installing react-native-navigation-boilerplate.\n\n\n\n\n ***********  Happy Coding  ************ \n\n\n\n"
