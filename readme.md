@@ -11,8 +11,9 @@ npm install -g react-native-navigation-boilerplate
 ## Getting Started
 
 After installing the package as a global executable. You will be able to use **"React-Native-Navigation"** command to generate new React Native Navigation boilerplate.
-    ```bash
-        $ react-native-boilerplate
+
+```bash
+      $ react-native-boilerplate
 ```
 
 this will ask you project name, bundle identifier and path for project and generate a fresh project.
@@ -24,14 +25,14 @@ Follow following steps to run project:-
 1. After generating project move to projectDirectory using
 
    ```bash
-   $ cd ProjectName
-   $ yarn
+    $ cd ProjectName
+    $ yarn
    ```
 
 2. For Android Run Project using
 
    ```bash
-   $ react-native run-android
+     $ react-native run-android
    ```
 
 3. For iOS : open xcodeproject and in menu click on product select Scheme ==> Edit Scheme ==> Build
@@ -40,14 +41,14 @@ Follow following steps to run project:-
    c) install third party library using following commands
 
     ```bash
-    $ cd node_modules/react-native/third-party/glog-0.3.5
-    $ ../../scripts/ios-configure-glog.sh
-    $ cd ../../../../
+        $ cd node_modules/react-native/third-party/glog-0.3.5
+        $ ../../scripts/ios-configure-glog.sh
+        $ cd ../../../../
     ```
    d) Run the project
 
    ```bash
-   $ react-native run-ios
+    $ react-native run-ios
    ```
 
 ## Boilerplate Structure
