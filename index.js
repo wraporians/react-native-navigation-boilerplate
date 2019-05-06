@@ -67,10 +67,11 @@ prompts([
     shell.rm("-rf", ".git");
     shell.rm("-rf", "package-lock.json");
     shell.rm("-rf", "yarn.lock");
-    shell.rm("-rf","android/app/build");
     shell.sed("-i", "reactNativeStarterV2", response.projectName, [
       "package.json",
-      "app.json"
+      "app.json",
+      "android/app/src/main/res/values/strings.xml",
+      "android/settings.gradle"
     ]);
     shell.mv(
       "-f",
@@ -125,7 +126,7 @@ prompts([
       "android/app/BUCK",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
       `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
-      "android/app/src/main/manifest.xml",
+      "android/app/src/main/AndroidManifest.xml",
       `ios/${response.projectName}/info.plist`,
       `ios/${response.projectName}-tvOS/info.plist`,
       `ios/${response.projectName}-tvOSTests/info.plist`,
@@ -150,7 +151,7 @@ prompts([
       "android/app/BUCK",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
       `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
-      "android/app/src/main/manifest.xml",
+      "android/app/src/main/AndroidManifest.xml",
       `ios/${response.projectName}/info.plist`,
       `ios/${response.projectName}-tvOS/info.plist`,
       `ios/${response.projectName}-tvOSTests/info.plist`,
@@ -171,6 +172,7 @@ prompts([
       `ios/${response.projectName}.xcodeproj/project.pbxproj`,
       `ios/${response.projectName}.xcodeproj/project.xcworkspace`
     ]);
+    shell.rm("-rf", "android/app/build");
     // shell.exec(
     //   "yarn && ./node_modules/react-native/scripts/ios-install-third-party.sh && ./node_modules/react-native/third-party/glog-0.3.5/configure "
     // );
