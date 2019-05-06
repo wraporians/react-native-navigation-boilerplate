@@ -42,7 +42,8 @@ Follow following steps to run project:-
         
         ```bash
         $ ./node_modules/react-native/scripts/ios-configure-glog.sh
-   d) Run the project     ```
+        ```
+   d) Run the project     
    
     ```bash
     $ react-native run-ios
