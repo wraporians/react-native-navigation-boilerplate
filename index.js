@@ -67,6 +67,7 @@ prompts([
     shell.rm("-rf", ".git");
     shell.rm("-rf", "package-lock.json");
     shell.rm("-rf", "yarn.lock");
+    shell.rm("-rf","android/app/build");
     shell.sed("-i", "reactNativeStarterV2", response.projectName, [
       "package.json",
       "app.json"
@@ -121,9 +122,10 @@ prompts([
     shell.rm("-rf", `ios/${response.projectName}.xcodeproj/xcuserdata/`);
     shell.sed("-i", "com.starter", response.bundleName, [
       "android/app/build.gradle",
+      "android/app/BUCK",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
       `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
-      "android/app/src/main/java/manifest.xml",
+      "android/app/src/main/manifest.xml",
       `ios/${response.projectName}/info.plist`,
       `ios/${response.projectName}-tvOS/info.plist`,
       `ios/${response.projectName}-tvOSTests/info.plist`,
@@ -145,9 +147,10 @@ prompts([
     ]);
     shell.sed("-i", "RNFramework", response.projectName, [
       "android/app/build.gradle",
+      "android/app/BUCK",
       `android/app/src/main/java/com/${projectFolder}/MainActivity.java`,
       `android/app/src/main/java/com/${projectFolder}/MainApplication.java`,
-      "android/app/src/main/java/manifest.xml",
+      "android/app/src/main/manifest.xml",
       `ios/${response.projectName}/info.plist`,
       `ios/${response.projectName}-tvOS/info.plist`,
       `ios/${response.projectName}-tvOSTests/info.plist`,
