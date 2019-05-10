@@ -56,15 +56,13 @@ Follow following steps to run project:-
    ```
 
 3. For iOS : open xCodeProject and in menu click on product select Scheme ==> Edit Scheme ==> Build
-   a) In build option un-check Parallelize Build
-   b) Now click on + icon at left bottom corner and add react as target
-   c) Open project in xCode and build it once then
-   d) Install third party library using following commands
+   1. In build option un-check Parallelize Build
+   2. Now click on + icon at left bottom corner and add react as target
+   3. Open project in xCode and build it once 
+   4. then Install third party library using following commands
 
    ```
-       $ cd node_modules/react-native/third-party/glog-0.3.5
-       $ ../../scripts/ios-configure-glog.sh
-       $ cd ../../../../
+       $ cd node_modules/react-native/third-party/glog-0.3.5 && ../../scripts/ios-configure-glog.sh && cd ../../../../
    ```
 
    if you are using xcode >10 then change build system to "legacy build system"
