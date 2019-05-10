@@ -10,7 +10,7 @@ npm install -g react-native-navigation-boilerplate
 
 ## Getting Started
 
-After installing the package as a global executable. You will be able to use **"React-Native-Navigation"** command to generate new React Native Navigation boilerplate.
+After installing the package as a global executable. You will be able to use **"react-native-boilerplate"** command to generate new React Native Navigation boilerplate.
 
 #### Usage
 
@@ -20,7 +20,7 @@ react-native-boilerplate <appName>
 
 this will ask you project name, bundle identifier and path for project and generate a fresh project.
 
-> With custom Bundle Identifier (Android only. For iOS, please use Xcode)
+> With custom Bundle Identifier
 
 ```
 react-native-boilerplate <appName> -b <bundleIdentifier>
@@ -66,7 +66,8 @@ Follow following steps to run project:-
    ```
 
    if you are using xcode >10 then change build system to "legacy build system"
-   d) Run the project
+   
+   Run the project
 
    ```
     $ react-native run-ios
