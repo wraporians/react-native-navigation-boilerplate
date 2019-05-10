@@ -4,7 +4,7 @@ A simple cli to scaffold your React Native Navigation V2 app fast and hybrid mob
 
 ## Installation
 
-```bash
+```
 npm install -g react-native-navigation-boilerplate
 ```
 
@@ -12,11 +12,31 @@ npm install -g react-native-navigation-boilerplate
 
 After installing the package as a global executable. You will be able to use **"React-Native-Navigation"** command to generate new React Native Navigation boilerplate.
 
-```bash
-      $ react-native-boilerplate
+#### Usage
+
+```
+react-native-boilerplate <appName>
 ```
 
 this will ask you project name, bundle identifier and path for project and generate a fresh project.
+
+> With custom Bundle Identifier (Android only. For iOS, please use Xcode)
+
+```
+react-native-boilerplate <appName> -b <bundleIdentifier>
+```
+
+#### Example
+
+```
+react-native-boilerplate "SampleApp"
+```
+
+> With custom Bundle Identifier
+
+```
+react-native-boilerplate "SampleApp" -b com.abc.SampleApp
+```
 
 ## Configuration
 
@@ -24,14 +44,14 @@ Follow following steps to run project:-
 
 1. After generating project move to projectDirectory using
 
-   ```bash
+   ```
     $ cd ProjectName
     $ yarn
    ```
 
 2. For Android Run Project using
 
-   ```bash
+   ```
      $ react-native run-android
    ```
 
@@ -41,22 +61,22 @@ Follow following steps to run project:-
    c) Open project in xCode and build it once then
    d) Install third party library using following commands
 
-    ```bash
-        $ cd node_modules/react-native/third-party/glog-0.3.5
-        $ ../../scripts/ios-configure-glog.sh
-        $ cd ../../../../
-    ```
+   ```
+       $ cd node_modules/react-native/third-party/glog-0.3.5
+       $ ../../scripts/ios-configure-glog.sh
+       $ cd ../../../../
+   ```
 
-    if you are using xcode >10 then change build system to "legacy build system"
+   if you are using xcode >10 then change build system to "legacy build system"
    d) Run the project
 
-   ```bash
+   ```
     $ react-native run-ios
    ```
 
 ## React-Native-Boilerplate Structure
 
-```bash
+```
 ├── ios
 ├── android
 |-- modified_modules

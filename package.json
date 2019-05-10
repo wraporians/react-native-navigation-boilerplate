@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-boilerplate",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A simple cli to scaffold your react-native-navigation-v2 with redux",
   "main": "index.js",
   "bin": {
@@ -29,6 +29,10 @@
   },
   "homepage": "https://github.com/Sonu654/react-native-navigation-v2-boilerplate#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cli-progress": "^2.1.1",
+    "minimist": "^1.2.0",
     "prompts": "^2.0.4",
     "shelljs": "^0.8.3"
   }
