@@ -113,7 +113,7 @@ if (response.projectConfirm) {
 
   // console.log("projectFolder", projectFolder);
   let projectURL =
-    "git clone https://github.com/Sonu654/react-native-navigation-v2-starter.git .";
+    "git clone https://github.com/surajSanwal/react-native-navigation-starter.git";
   shell.exec(projectURL, { silent: true });
   shell.rm("-rf", ".git");
   shell.rm("-rf", "package-lock.json");

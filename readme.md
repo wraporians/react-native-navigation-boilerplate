@@ -1,6 +1,6 @@
-# React Native Navigation V2 Boilerplate
+# React Native Navigation Boilerplate
 
-A simple cli to scaffold your React Native Navigation V2 app fast and hybrid mobile app development.
+A simple cli to scaffold your React Native Navigation V3 app fast and hybrid mobile app development.
 
 ## Installation
 
@@ -56,9 +56,10 @@ Follow following steps to run project:-
    ```
 
 3. For iOS : open xCodeProject and in menu click on product select Scheme ==> Edit Scheme ==> Build
+
    1. In build option un-check Parallelize Build
    2. Now click on + icon at left bottom corner and add react as target
-   3. Open project in xCode and build it once 
+   3. Open project in xCode and build it once
    4. then Install third party library using following commands
 
    ```
@@ -66,7 +67,7 @@ Follow following steps to run project:-
    ```
 
    if you are using xcode >10 then change build system to "legacy build system"
-   
+
    Run the project
 
    ```
@@ -80,8 +81,7 @@ Follow following steps to run project:-
 ├── android
 |-- modified_modules
 ├── src
-│   ├── actionTypes
-│   │   └── index.js
+│   ├── actionTypes.js
 │   ├── actions
 │   │   ├── auth
 │   │   └── dashboard
@@ -94,6 +94,7 @@ Follow following steps to run project:-
 │   ├── config
 │   │   └── navigation.js
 │   │   └── routes.js
+|   |   |__ connection.js
 │   ├── constants
 │   │   ├── fonts.js
 │   │   └── images.js
@@ -107,8 +108,6 @@ Follow following steps to run project:-
 │   │   ├── auth
 │   │   └── dashboard
 │   │── store
-│   │── utilities
-│   │   ├── backHandling.js
 ├── app.json
 ├── index.js
 ├── package.json
@@ -116,20 +115,14 @@ Follow following steps to run project:-
 
 ## Pre-Installed Packages
 
-- lodash
 - react
-- react-native
-- react-native-keyboard-aware-scroll-view
-- react-native-linear-gradient
-- react-native-navigation
-- react-native-vector-icons
+- react-native @0.60
+- react-native-navigation v3
 - react-redux
 - redux
-- redux-immutable-state-invariant
 - redux-logger
 - redux-persist
 - redux-thunk
-- seamless-immutable
 - babel-preset-react-native (dev)
 - jest (dev)
 - eslint (dev)
