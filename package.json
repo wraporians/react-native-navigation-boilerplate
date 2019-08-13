@@ -1,5 +1,5 @@
 {
-  "name": "react-native-navigation-boilerplate",
+  "name": "@wraporians/react-native-navigation-boilerplate",
   "version": "2.0.0",
   "description": "A simple cli to scaffold your react-native-navigation-v2 with redux",
   "main": "index.js",
@@ -25,9 +25,9 @@
   "author": "Suraj Sanwal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Sonu654/react-native-navigation-v2-boilerplate/issues"
+    "url": "https://https://github.com/wraporians/react-native-navigation-boilerplate/issues"
   },
-  "homepage": "https://github.com/Sonu654/react-native-navigation-v2-boilerplate#readme",
+  "homepage": "https://github.com/Sonu654/react-native-navigation-boilerplate/#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "cheerio": "^1.0.0-rc.3",
@@ -35,5 +35,6 @@
     "minimist": "^1.2.0",
     "prompts": "^2.0.4",
     "shelljs": "^0.8.3"
-  }
+  },
+  "devDependencies": {}
 }
